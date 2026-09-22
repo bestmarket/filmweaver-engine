@@ -32,7 +32,7 @@ export async function getProject(id: string, user: AuthenticatedUser): Promise<P
 
 export async function createProject(
   user: AuthenticatedUser,
-  input: { title: string; logline?: string; genre?: string },
+  input: { title: string; logline?: string | undefined; genre?: string | undefined },
 ): Promise<ProjectRow> {
   const { data, error } = await getDb()
     .from("projects")

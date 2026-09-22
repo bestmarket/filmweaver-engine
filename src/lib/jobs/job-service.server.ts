@@ -26,11 +26,11 @@ export type JobRow = {
   error_message: string | null;
   provider_kind: ProviderKind | null;
   provider_name: string | null;
-  provider_metadata: Record<string, unknown>;
+  provider_metadata: Record<string, any>;
   reserved_credits: number;
   idempotency_key: string | null;
-  input: Record<string, unknown>;
-  output: Record<string, unknown> | null;
+  input: Record<string, any>;
+  output: Record<string, any> | null;
   started_at: string | null;
   finished_at: string | null;
   created_at: string;
@@ -44,12 +44,12 @@ export async function createJob(
   user: AuthenticatedUser,
   input: {
     jobType: string;
-    projectId?: string;
-    payload?: Record<string, unknown>;
-    providerKind?: ProviderKind;
-    providerName?: string;
-    idempotencyKey?: string;
-    units?: number;
+    projectId?: string | undefined;
+    payload?: Record<string, unknown> | undefined;
+    providerKind?: ProviderKind | undefined;
+    providerName?: string | undefined;
+    idempotencyKey?: string | undefined;
+    units?: number | undefined;
   },
 ): Promise<JobRow> {
   const db = getDb();
